@@ -1,0 +1,16 @@
+<%- | $listen,
+      $documentRoot
+| -%>
+# Fichier de configuration généré par Puppet
+
+Listen <%= $listen %>
+
+DocumentRoot <%= $documentRoot %>
+
+<Directory <%= $documentRoot %>>
+    Options Indexes FollowSymLinks
+    AllowOverride None
+    Require all granted
+</Directory>
+  
+
