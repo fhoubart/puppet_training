@@ -9,7 +9,7 @@ class muppetweb {
   file {'/etc/apache2/sites-available/muppetweb.conf':
     ensure => file,
     source => 'puppet:///modules/muppetweb/muppetweb.conf',
-    notify => Service['apache2']
+    #notify => Service['apache2']
   }
 
   vcsrepo { '/var/www/muppet':
