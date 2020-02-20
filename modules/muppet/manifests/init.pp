@@ -1,4 +1,4 @@
-class muppet {
+define muppet {
 
   group { 'kermit':
     ensure => present,
