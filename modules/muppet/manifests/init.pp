@@ -24,7 +24,7 @@ class muppet {
 
   file { "/home/kermit/.profile":
     ensure => file,
-    content => "echo 'Hello from kermi'",
+    source => 'puppet:///modules/muppet/.profile',
     owner => 'kermit',
     group => 'kermit',
   }
