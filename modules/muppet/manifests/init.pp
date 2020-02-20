@@ -1,33 +1,31 @@
-class muppet(
-  $muppet_name = 'kermit'
-) {
-  notify { 'Hello puppet!': }
+class muppet {
 
-  group { "${muppet_name}":
-    ensure => 'present'
+  group { 'kermit':
+    ensure => present,
+    # Le before ne sert à rien car il est déjà dans File
+    before => File['/home/kermit'],
   }
 
-  user { "$muppet_name":
-    ensure => 'present',
-    shell => '/bin/bash',
-    home => '/home/$muppet_name',
-    gid => '$muppet_name',
+  user { 'kermit':
+    require => Group['kermit'],
+    before => File['/home/kermit'],
+    ensure => present,
+    gid => 'kermit',
+    home => "/home/kermit",
+    shell => "/bin/bash",
   }
 
-  file { '/home/${muppet_name}':
-    ensure => 'directory',
-    owner => '${muppet_name}',
-    group => '${muppet_name}',
+  file { '/home/kermit':
+    ensure => directory,
+    owner => 'kermit',
+    group => 'kermit',
+    before => File['/home/kermit/.profile'],
   }
 
-  file { '/home/${muppet_name}/.bashrc':
-    ensure => 'file',
-    content => 'echo \'I was created by puppet!\''
+  file { "/home/kermit/.profile":
+    ensure => file,
+    content => "echo 'Hello from kermi'",
+    owner => 'kermit',
+    group => 'kermit',
   }
-
-  file { '/home/${muppet_name}/.profile':
-    ensure => 'file',
-    content => 'echo \'I was created by puppet!\''
-  }
-
 }

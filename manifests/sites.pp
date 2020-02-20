@@ -3,9 +3,5 @@ node default {
 }
 
 node agent-muppet {
-  notify { 'I am a Muppet!':}
-  class {'muppet':
-    name => 'kermit'
-  }
-  include muppetweb
+  include muppet
 }
