@@ -26,7 +26,7 @@ class muppet(
 
   file { "/home/$muppetname/.profile":
     ensure => file,
-    source => epp('muppet/.profile.epp', {
+    source => epp('/muppet/.profile.epp', {
       muppetname => "$muppetname"
     }),
     owner => "$muppetname",
