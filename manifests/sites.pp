@@ -7,5 +7,4 @@ node agent-muppet {
   class {'muppet':
     name => 'kermit'
   }
-
 }
