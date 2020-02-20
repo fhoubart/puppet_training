@@ -2,7 +2,7 @@
 
 echo "Hello from kermit !"
 
-cat <<EOF
+cat << "EOF"
           .---.     .---.
          ( -o- )---( -o- )
          ;-...-`   `-...-;
@@ -16,5 +16,5 @@ cat <<EOF
    jgs  /                 \
        /.-'`\   .'.   /`'-.\
       `      '.'   '.'
-      
+
 EOF
