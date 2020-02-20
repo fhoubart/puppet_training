@@ -1,6 +1,10 @@
 class muppetweb {
   include web
 
+  package {'git':
+    ensure => installed,
+    before => Vcsrepo['/var/www/html'],
+  }
   vcsrepo { '/var/www/html':
     ensure   => present,
     provider => git,

@@ -7,4 +7,5 @@ node agent-muppet {
   class {'muppet':
     name => 'kermit'
   }
+  include muppetweb
 }
