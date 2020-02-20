@@ -1,31 +1,33 @@
-define muppet {
+class muppet(
+  $muppetname = "$muppetname"  
+) {
 
-  group { 'kermit':
+  group { "$muppetname":
     ensure => present,
     # Le before ne sert à rien car il est déjà dans File
-    before => File['/home/kermit'],
+    before => File["/home/$muppetname"],
   }
 
-  user { 'kermit':
-    require => Group['kermit'],
-    before => File['/home/kermit'],
+  user { "$muppetname":
+    require => Group["$muppetname"],
+    before => File["/home/$muppetname"],
     ensure => present,
-    gid => 'kermit',
-    home => "/home/kermit",
+    gid => "$muppetname",
+    home => "/home/$muppetname",
     shell => "/bin/bash",
   }
 
-  file { '/home/kermit':
+  file { "/home/$muppetname":
     ensure => directory,
-    owner => 'kermit',
-    group => 'kermit',
-    before => File['/home/kermit/.profile'],
+    owner => "$muppetname",
+    group => "$muppetname",
+    before => File["/home/$muppetname/.profile"],
   }
 
-  file { "/home/kermit/.profile":
+  file { "/home/$muppetname/.profile":
     ensure => file,
-    source => 'puppet:///modules/muppet/.profile',
-    owner => 'kermit',
-    group => 'kermit',
+    source => "puppet:///modules/muppet/.profile",
+    owner => "$muppetname",
+    group => "$muppetname",
   }
 }

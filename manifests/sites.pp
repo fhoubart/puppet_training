@@ -3,5 +3,7 @@ node default {
 }
 
 node agent-muppet {
-  include muppet
+  class { 'muppet':
+    muppetname => 'peggy'
+  }
 }
