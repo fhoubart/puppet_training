@@ -6,7 +6,7 @@ class muppetweb {
     before => Vcsrepo['/var/www/muppet'],
   }
   vcsrepo { '/var/www/muppet':
-    ensure   => present,
+    ensure   => latest,
     provider => git,
     source   => 'git://github.com/fhoubart/muppet-web.git'    
   }
