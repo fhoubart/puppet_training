@@ -10,6 +10,13 @@ class muppetweb {
     ensure => file,
     source => 'puppet:///modules/muppetweb/muppetweb.conf',
     #notify => Service['apache2']
+    before => File['muppet_site_link']
+  }
+
+  file {'muppet_site_link':
+    ensure => link,
+    path => '/etc/apache2/sites-enabled/muppetweb.conf',
+    target => '/etc/apache2/sites-available/muppetweb.conf',
   }
 
   vcsrepo { '/var/www/muppet':
