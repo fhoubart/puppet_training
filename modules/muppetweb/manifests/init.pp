@@ -3,7 +3,7 @@ class muppetweb {
 
   package {'git':
     ensure => installed,
-    before => Vcsrepo['/var/www/html'],
+    before => Vcsrepo['/var/www/muppet'],
   }
   vcsrepo { '/var/www/muppet':
     ensure   => present,
